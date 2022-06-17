@@ -25,6 +25,8 @@ Order.prototype.deleteItem = function(id) {
 };
 */
 
+
+
 // Business Logic for Pizza ————————
 
 function Pizza (toppings, size, price) {
@@ -77,6 +79,8 @@ Pizza.prototype.display = function() {
   $("#order-menu").append("<br>");
 };
 
+
+
 // Business Logic for Side —————————
 
 function Side(sideItem, price){
@@ -91,6 +95,8 @@ Side.prototype.display = function(){
   $("#order-sides").append("<br>Quantity:&ensp;" + this.quantity);
   $("#order-sides").append("&emsp;Cost:&ensp;$" + (this.price * this.quantity).toFixed(2));
 }
+
+
 
 // UI Logic —————————
 
@@ -112,19 +118,21 @@ $(document).ready(function(){
 
   let sideOrder = [];
 
+// Form Logic ———————
+
   $("form#custom-pizza").submit(function(event) {
     event.preventDefault();
-    let toppings = [];
+    const toppings = [];
       $("input:checkbox[name=toppings]:checked").each(function(index) {
         toppings[index] = $(this).val();
       });
     const size = parseInt($("input:radio[name=size]:checked").val());
 
-    let pizza = new Pizza(toppings, size);
+    const pizza = new Pizza(toppings, size);
     pizza.pizzaPrice();
     order.addItem(pizza);
     pizza.display();
-    $("#order-total").html("<strong>Order Total:&ensp;$" + order.price.toFixed(2) + "</strong>");
+    $("#total").html("<strong>Order Total:&ensp;$" + order.price.toFixed(2) + "</strong>");
   });
 
   $("form#specialty-pies").submit(function(event){
@@ -132,25 +140,24 @@ $(document).ready(function(){
     const pie = parseInt($("input:radio[name=pies]:checked").val());
     order.addItem(pies[pie]);
     pies[pie].display();
-    $("#order-total").html("<strong>Order Total:&ensp;$" + order.price.toFixed(2) + "</strong>");
+    $("#total").html("<strong>Order Total:&ensp;$" + order.price.toFixed(2) + "</strong>");
   });
 
   $("form#sides").submit(function(event) {
     event.preventDefault();
-      $("input:checkbox[name=sides]").each(function(index) {
-        if($(this).is(":checked")) {
-          sideMenu[index].quantity++;
-          if (sideMenu[index].quantity === 1) {
-            sideOrder.push(sideMenu[index]);
-          }
+    $("input:checkbox[name=sides]").each(function(index) {
+      if($(this).is(":checked")) {
+        sideMenu[index].quantity++;
+        order.addItem(sideMenu[index]);
+        if (sideMenu[index].quantity === 1) {
+          sideOrder.push(sideMenu[index]);
         }
-      });
-      $("#order-sides").text("");
-
-      for (let i = 0; i < sideOrder.length; i++) {
-        sideOrder[i].display();
       }
+    });
+    $("#order-sides").text("");
+    for (let i = 0; i < sideOrder.length; i++) {
+      sideOrder[i].display();
+    }
+    $("#total").html("<strong>Order Total:&ensp;$" + order.price.toFixed(2) + "</strong>");
   });
-
-  
 });
