@@ -110,6 +110,8 @@ $(document).ready(function(){
   const wine = new Side("Bottle Wine", 8.50);
   const sideMenu = [breadsticks, salad, wings, soda, beer, wine];
 
+  let sideOrder = [];
+
   $("form#custom-pizza").submit(function(event) {
     event.preventDefault();
     let toppings = [];
@@ -135,11 +137,12 @@ $(document).ready(function(){
 
   $("form#sides").submit(function(event) {
     event.preventDefault();
-    let sideOrder = [];
       $("input:checkbox[name=sides]").each(function(index) {
         if($(this).is(":checked")) {
           sideMenu[index].quantity++;
-          sideOrder.push(sideMenu[index]);
+          if (sideMenu[index].quantity === 1) {
+            sideOrder.push(sideMenu[index]);
+          }
         }
       });
       $("#order-sides").text("");
