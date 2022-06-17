@@ -34,12 +34,19 @@ Pizza.prototype.pizzaPrice = function(){
   }
 };
 
-const pizza1 = new Pizza(["pepperoni", "sausage"], 10);
-const pizza2 = new Pizza(["pepperoni", "sausage", "mushrooms", "olives"], 10);
-pizza1.pizzaPrice();
-pizza2.pizzaPrice();
-
 $(document).ready(function(){
 
+  $("form#custom-pizza").submit(function(event) {
+    event.preventDefault();
+    const toppings = [];
+      $("input:checkbox[name=toppings]:checked").each(function(index) {
+        toppings[index] = $(this).val();
+      });
+    const size = parseInt($("input:radio[name=size]:checked").val());
+
+    let pizza = new Pizza(toppings, size);
+    pizza.pizzaPrice();
+    console.log(pizza);
+  });
 
 });
