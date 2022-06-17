@@ -79,3 +79,14 @@ Item #1:
 Side: Breadsticks
 Cost: $7.50
 Quantity: 1
+
+Test: "should update item quantities if the same item is selected a second time"
+Code:
+const breadsticks = new Side("Breadsticks", 7.50);
+breadsticks.display();
+breadsticks.display();
+Expected Output:
+Item #1:
+Side: Breadsticks
+Cost: $7.50
+Quantity: 2

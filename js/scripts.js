@@ -18,21 +18,12 @@ Order.prototype.assignId = function() {
   return this.currentId;
 };
 
+/*
 Order.prototype.deleteItem = function(id) {
   this.price -= items[id].price;
   delete this.items[id];
 };
-
-Order.prototype.update = function(sideMenu) {
-  for (let i = 0; i < this.items.length; i++) {
-    if (sideMenu == (this.items[i])) {
-      quantity = this.items[i].quantity + 1;
-      delete this.items[i]
-      return quantity;
-    }
-  }
-  return 1;
-};
+*/
 
 // Business Logic for Pizza ————————
 
@@ -95,12 +86,11 @@ function Side(sideItem, price){
   this.id = 0;
 }
 
-Side.prototype.display = function() {
-  this.quantity++;
-  $("#order-menu").append("<br><strong>Side:&ensp;" + this.sideItem + "</strong>");
-  $("#order-menu").append("<br>Quantity:&ensp;" + this.quantity);
-  $("#order-menu").append("&emsp;Cost:&ensp;$" + this.price.toFixed(2));
-};
+Side.prototype.display = function(){
+  $("#order-sides").append("<br>Side:&ensp;" + this.sideItem);
+  $("#order-sides").append("<br>Quantity:&ensp;" + this.quantity);
+  $("#order-sides").append("&emsp;Cost:&ensp;$" + (this.price * this.quantity).toFixed(2));
+}
 
 // UI Logic —————————
 
@@ -145,25 +135,19 @@ $(document).ready(function(){
 
   $("form#sides").submit(function(event) {
     event.preventDefault();
-    let sideOrder = [0,0,0,0,0,0];
+    let sideOrder = [];
       $("input:checkbox[name=sides]").each(function(index) {
         if($(this).is(":checked")) {
-          sideOrder[index] = parseInt($(this).val());
+          sideMenu[index].quantity++;
+          sideOrder.push(sideMenu[index]);
         }
       });
+      $("#order-sides").text("");
 
-    for(let i = 0; i < sideMenu.length; i++){
-      order.update(sideMenu[i])
-      order.addItem(sideMenu[i]);
-      sideMenu[i].display();
-      break;
-    }
-    
-    $("#total").html("<strong>Order Total:&ensp;$" + order.price.toFixed(2) + "</strong>");
+      for (let i = 0; i < sideOrder.length; i++) {
+        sideOrder[i].display();
+      }
   });
 
-  $("form#order-total").submit(function(event){
-    event.preventDefault();
-  });
-
+  
 });
