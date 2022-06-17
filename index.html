@@ -45,21 +45,21 @@
         <h2>Specialty Pies</h2>
         <h3>From our menu:</h3>
         <p><em>All specialty pizzas are 16"</em></p>
-        <input type="radio" name="pies" value="0" required>&ensp;The Corleone<br>
-        <input type="radio" name="pies" value="1" required>&ensp;The Soprano<br>
-        <input type="radio" name="pies" value="2" required>&ensp;The Good Fella<br>
-        <input type="radio" name="pies" value="3" required>&ensp;The Paradiso<br>
+        <input type="radio" name="pies" class="pies" value="0" required>&ensp;The Corleone<br>
+        <input type="radio" name="pies" class="pies" value="1" required>&ensp;The Soprano<br>
+        <input type="radio" name="pies" class="pies" value="2" required>&ensp;The Good Fella<br>
+        <input type="radio" name="pies" class="pies" value="3" required>&ensp;The Paradiso<br>
         <button type="submit" class="btn" form-id="specialty-pies">Add Items</button>
       </form>
       <form id="sides" class="sub-box">
         <h3>Sides</h3>
-        <input type="checkbox" name="sides" value="1">&ensp;Breadsticks w/ Sauce<br>
-        <input type="checkbox" name="sides" value="1">&ensp;Caesar Salad<br>
-        <input type="checkbox" name="sides" value="1">&ensp;6 Wings<br>
+        <input type="checkbox" name="sides" class="sidesCheck">&ensp;Breadsticks w/ Sauce<br>
+        <input type="checkbox" name="sides" class="sidesCheck">&ensp;Caesar Salad<br>
+        <input type="checkbox" name="sides" class="sidesCheck">&ensp;6 Wings<br>
         <h3>Beverages</h3>
-        <input type="checkbox" name="sides" value="1">&ensp;Liter Soda<br>
-        <input type="checkbox" name="sides" value="1">&ensp;6 Pack Beer<br>
-        <input type="checkbox" name="sides" value="1">&ensp;Red Wine<br>
+        <input type="checkbox" name="sides" class="sidesCheck">&ensp;Liter Soda<br>
+        <input type="checkbox" name="sides" class="sidesCheck">&ensp;6 Pack Beer<br>
+        <input type="checkbox" name="sides" class="sidesCheck">&ensp;Red Wine<br>
         <button type="submit" class="btn" form-id="sides">Add Items</button>
       </form>
       </div>
@@ -67,20 +67,22 @@
       <form id="custom-pizza" class="sub-box">
         <h2>Custom Order</h2>
         <h3 class="sub-box">Choose your toppings:</h3>
-        <input type="checkbox" name="toppings" value="Pepperoni">&ensp;Pepperoni<br>
-        <input type="checkbox" name="toppings" value="Sausage">&ensp;Sausage<br>
-        <input type="checkbox" name="toppings" value="Mushrooms">&ensp;Mushrooms<br>
-        <input type="checkbox" name="toppings" value="Olives">&ensp;Olives<br>
-        <input type="checkbox" name="toppings" value="Peppers">&ensp;Bell peppers<br>
-        <input type="checkbox" name="toppings" value="Anchovies">&ensp;Anchovies<br>
-        <input type="checkbox" name="toppings" value="Canadian-bacon">&ensp;Canadian bacon<br>
+        <input type="checkbox" name="toppings" class="customPie" value="Pepperoni">&ensp;Pepperoni<br>
+        <input type="checkbox" name="toppings" class="customPie" value="Sausage">&ensp;Sausage<br>
+        <input type="checkbox" name="toppings" class="customPie" value="Mushrooms">&ensp;Mushrooms<br>
+        <input type="checkbox" name="toppings" class="customPie" value="Olives">&ensp;Olives<br>
+        <input type="checkbox" name="toppings" class="customPie" value="Bell peppers">&ensp;Bell peppers<br>
+        <input type="checkbox" name="toppings" class="customPie" value="Anchovies">&ensp;Anchovies<br>
+        <input type="checkbox" name="toppings" class="customPie" value="Canadian bacon">&ensp;Canadian bacon<br>
         <h3 class="sub-box">Choose a size:</h3>
-        <input type="radio" name="size" value="10" required>&ensp;Small (10")<br>
-        <input type="radio" name="size" value="12" required>&ensp;Medium (12")<br>
-        <input type="radio" name="size" value="16" required>&ensp;Large (16")<br>
-        <input type="radio" name="size" value="18" required>&ensp;Extra large (18")<br>
-        <input type="radio" name="size" value="48" required>&ensp;Pepperoni Family Special (48")<br>
+        <input type="radio" name="size" class="customPie" value="10" required>&ensp;Small (10")<br>
+        <input type="radio" name="size" class="customPie" value="12" required>&ensp;Medium (12")<br>
+        <input type="radio" name="size" class="customPie" value="16" required>&ensp;Large (16")<br>
+        <input type="radio" name="size" class="customPie" value="18" required>&ensp;Extra large (18")<br>
+        <input type="radio" name="size" class="customPie" value="48" required>&ensp;Pepperoni Family Special (48")<br>
         <button type="submit" class="btn" form-id="custom-pizza">Add Items</button>
+        <br><br><br><br><br><br>
+
       </form>
       </div>
     </div>

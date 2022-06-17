@@ -131,6 +131,7 @@ $(document).ready(function(){
     pizza.pizzaPrice();
     order.addItem(pizza);
     pizza.display();
+    $(".customPie").prop("checked", false);
     $("#total").html("<strong>Order Total:&ensp;$" + order.price.toFixed(2) + "</strong>");
   });
 
@@ -139,6 +140,7 @@ $(document).ready(function(){
     const pie = parseInt($("input:radio[name=pies]:checked").val());
     order.addItem(pies[pie]);
     pies[pie].display();
+    $(".pies").prop("checked", false);
     $("#total").html("<strong>Order Total:&ensp;$" + order.price.toFixed(2) + "</strong>");
   });
 
@@ -157,6 +159,7 @@ $(document).ready(function(){
     for (let i = 0; i < sideOrder.length; i++) {
       sideOrder[i].display();
     }
+    $(".sidesCheck").prop("checked", false);
     $("#total").html("<strong>Order Total:&ensp;$" + order.price.toFixed(2) + "</strong>");
   });
 });
