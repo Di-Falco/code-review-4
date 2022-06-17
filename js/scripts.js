@@ -1,3 +1,23 @@
+function Order () {
+  this.items = {};
+  this.currentId = 0;
+  this.price = 0;
+}
+
+Order.prototype.addItem = function(item) {
+  item.id = this.assignId();
+  this.items[item.id] = item;
+  this.price += item.price;
+};
+Order.prototype.assignId = function() {
+  this.currentId += 1;
+  return this.currentId;
+};
+Order.prototype.deleteItem = function(id) {
+  this.price -= items[id].price;
+  delete this.items[id];
+};
+
 function Pizza (toppings, size) {
   this.toppings = toppings;
   this.size = size;
@@ -35,7 +55,7 @@ Pizza.prototype.pizzaPrice = function(){
 };
 
 $(document).ready(function(){
-
+  let order = new Order;
   $("form#custom-pizza").submit(function(event) {
     event.preventDefault();
     const toppings = [];
@@ -46,7 +66,9 @@ $(document).ready(function(){
 
     let pizza = new Pizza(toppings, size);
     pizza.pizzaPrice();
+    order.addItem(pizza);
     console.log(pizza);
+    console.log(order);
   });
 
 });

@@ -28,4 +28,17 @@ Expected Output:
 Pizza { toppings: ["pepperoni", "sausage"], size: 10, price: 12 }
 Pizza { toppings: ["pepperoni", "sausage", "mushrooms", "olives"], size: 10, price: 15 }
 
+Describe Order()
+
+Test: "should store each pizza entered through the form and keep track of total price"
+Code:
+let order = new Order;
+const pizza1 = new Pizza(["pepperoni", "sausage"], 16, 18);
+order.addItem(pizza1);
+const pizza2 = new Pizza(["pepperoni", "sausage", "mushrooms", "olives"], 10, 15);
+order.addItem(pizza2);
+Expected Output: Order { items: {1: Pizza, 2: Pizza} currentId: 2, price: 33}
+
+
+
 
