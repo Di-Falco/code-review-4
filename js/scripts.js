@@ -23,6 +23,17 @@ Order.prototype.deleteItem = function(id) {
   delete this.items[id];
 };
 
+Order.prototype.update = function(sideMenu) {
+  for (let i = 0; i < this.items.length; i++) {
+    if (sideMenu == (this.items[i])) {
+      quantity = this.items[i].quantity + 1;
+      delete this.items[i]
+      return quantity;
+    }
+  }
+  return 1;
+};
+
 // Business Logic for Pizza ————————
 
 function Pizza (toppings, size, price) {
@@ -86,8 +97,7 @@ function Side(sideItem, price){
 
 Side.prototype.display = function() {
   this.quantity++;
-  $("#order-menu").append("<br><strong>Item #" + this.id + ":<strong>&ensp;");
-  $("#order-menu").append("<br>Side:&ensp;" + this.sideItem);
+  $("#order-menu").append("<br><strong>Side:&ensp;" + this.sideItem + "</strong>");
   $("#order-menu").append("<br>Quantity:&ensp;" + this.quantity);
   $("#order-menu").append("&emsp;Cost:&ensp;$" + this.price.toFixed(2));
 };
@@ -108,6 +118,7 @@ $(document).ready(function(){
   const soda = new Side("1 Liter Soda", 1.50);
   const beer = new Side("6 Pack Beer", 6.50);
   const wine = new Side("Bottle Wine", 8.50);
+  const sideMenu = [breadsticks, salad, wings, soda, beer, wine];
 
   $("form#custom-pizza").submit(function(event) {
     event.preventDefault();
@@ -134,7 +145,6 @@ $(document).ready(function(){
 
   $("form#sides").submit(function(event) {
     event.preventDefault();
-    const sideMenu = [breadsticks, salad, wings, soda, beer, wine];
     let sideOrder = [0,0,0,0,0,0];
       $("input:checkbox[name=sides]").each(function(index) {
         if($(this).is(":checked")) {
@@ -143,11 +153,12 @@ $(document).ready(function(){
       });
 
     for(let i = 0; i < sideMenu.length; i++){
-      if (sideOrder[i] !== 0){
-        order.addItem(sideMenu[i]);
-        sideMenu[i].display();
-      }
+      order.update(sideMenu[i])
+      order.addItem(sideMenu[i]);
+      sideMenu[i].display();
+      break;
     }
+    
     $("#total").html("<strong>Order Total:&ensp;$" + order.price.toFixed(2) + "</strong>");
   });
 
