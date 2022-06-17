@@ -54,6 +54,17 @@ Pizza.prototype.pizzaPrice = function(){
   }
 };
 
+Pizza.prototype.display = function() {
+  $("#order-menu").append("<strong>Item #" + this.id + ":<strong>");
+  $("#order-menu").append("Toppings:&ensp;");
+  for (let i = 0; i < this.toppings.length; i++){
+    $("#order-menu").append(this.toppings[i] + "&ensp;");
+  }
+  $("#order-menu").append("<br>Size:&ensp;" + this.size + "\"");
+  $("#order-menu").append("<br>Cost:&ensp;$" + this.price.toFixed(2));
+  $("#order-menu").append("<br>");
+};
+
 $(document).ready(function(){
   let order = new Order;
   $("form#custom-pizza").submit(function(event) {
@@ -67,6 +78,7 @@ $(document).ready(function(){
     let pizza = new Pizza(toppings, size);
     pizza.pizzaPrice();
     order.addItem(pizza);
+    pizza.display();
     console.log(pizza);
     console.log(order);
   });

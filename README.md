@@ -39,6 +39,15 @@ const pizza2 = new Pizza(["pepperoni", "sausage", "mushrooms", "olives"], 10, 15
 order.addItem(pizza2);
 Expected Output: Order { items: {1: Pizza, 2: Pizza} currentId: 2, price: 33}
 
+Describe Pizza.prototype.display()
 
+Test: "should output information for each pizza ordered"
+Code:
+const pizza1 = new Pizza(["pepperoni", "sausage", "olives"], 16, 18);
+pizza1.display();
+Expected Output:
+Toppings:  Pepperoni  Sausage  Olives
+Size: 16"
+Cost: $18.50
 
 
