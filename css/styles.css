@@ -8,6 +8,11 @@ h1 {
 }
 
 h2 {
+  font-weight: bold;
+  text-align: center;
+}
+
+h3 {
   text-align: center;
 }
 
@@ -24,9 +29,10 @@ h2 {
   background-color: white;
   border: 5px solid darkgreen;
   padding: 1%;
-  padding-left: 25%;
-  padding-right: 25%;
+  padding-left: 20%;
+  padding-right: 20%;
   width: 90%;
+  font-size: 72px;
 }
 
 .box {

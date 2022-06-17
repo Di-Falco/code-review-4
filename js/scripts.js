@@ -69,12 +69,11 @@ Pizza.prototype.display = function() {
   if (this.toppings.length === 0) {
     this.toppings.push("Cheese");
   }
-  $("#order-menu").append("<br><strong>Item #" + this.id + ":<strong>&ensp;");
-  $("#order-menu").append("<br>Pizza:&ensp;");
+  $("#order-menu").append("<br><strong>Pizza:&ensp;");
   for (let i = 0; i < this.toppings.length; i++){
     $("#order-menu").append(this.toppings[i] + "&ensp;");
   }
-  $("#order-menu").append("<br>Size:&ensp;" + this.size + "\"");
+  $("#order-menu").append("</strong><br>Size:&ensp;" + this.size + "\"");
   $("#order-menu").append("<br>Cost:&ensp;$" + this.price.toFixed(2));
   $("#order-menu").append("<br>");
 };
