@@ -18,28 +18,28 @@ Order.prototype.deleteItem = function(id) {
   delete this.items[id];
 };
 
-function Pizza (toppings, size) {
+function Pizza (toppings, size, price) {
   this.toppings = toppings;
   this.size = size;
-  this.price = 0;
+  this.price = price;
 }
 
 Pizza.prototype.pizzaPrice = function(){
   switch(this.size){
     case(10):
-      this.price += 12;
+      this.price = 12;
       break;
     case(12):
-      this.price += 14;
+      this.price = 14;
       break;
     case(16):
-      this.price += 18;
+      this.price = 18;
       break;
     case(18):
-      this.price += 20;
+      this.price = 20;
       break;
     case(48):
-      this.price += 60;
+      this.price = 60;
       break;
   };
   
@@ -59,7 +59,7 @@ Pizza.prototype.display = function() {
     this.toppings.push("Cheese");
   }
   $("#order-menu").append("<strong>Item #" + this.id + ":<strong>&ensp;");
-  $("#order-menu").append("Toppings:&ensp;");
+  $("#order-menu").append("<br>Toppings:&ensp;");
   for (let i = 0; i < this.toppings.length; i++){
     $("#order-menu").append(this.toppings[i] + "&ensp;");
   }
@@ -70,6 +70,10 @@ Pizza.prototype.display = function() {
 
 $(document).ready(function(){
   let order = new Order;
+  const donCorleone = new Pizza(["Pepperoni", "Anchovies", "Horse"], 16, 26);
+  const tonySoprano = new Pizza(["Sausage", "Mushroom", "Olive", "Red Bell Pepper"], 16, 24);
+  const goodFella = new Pizza(["Chicken", "Red Peppers", "Olives", "Fresh Basil"], 16, 26);
+  const paradiso = new Pizza(["Fresh Garlic", "Tomatoes", "Basil", "Fresh Mozz"], 16, 28);
   $("form#custom-pizza").submit(function(event) {
     event.preventDefault();
     const toppings = [];

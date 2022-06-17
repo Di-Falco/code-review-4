@@ -1,0 +1,26 @@
+body {
+  background-color: darkred;
+}
+
+h1 {
+  text-align: center;
+}
+
+h2 {
+  text-align: center;
+}
+
+.box {
+  border: 15px double darkgreen;
+  background-color: white;
+  margin: 1%;
+  padding: 1%;
+  box-sizing: border-box;
+  width: auto;
+}
+
+.btn {
+  border: 5px solid darkgreen;
+  background-color: white;
+  margin: 2%;
+}
