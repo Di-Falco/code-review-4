@@ -18,4 +18,14 @@ Expected Output:
 Pizza { toppings: ["pepperoni", "sausage"], size: 10, price: 12 }
 Pizza { toppings: ["pepperoni", "sausage"], size: 16, price: 18 }
 
+Test: "should increase price by 1.50 for each extra topping beyond the first two"
+Code:
+const pizza1 = new Pizza(["pepperoni", "sausage"], 10);
+const pizza2 = new Pizza(["pepperoni", "sausage", "mushrooms", "olives"], 10);
+pizza1.pizzaPrice();
+pizza2.pizzaPrice();
+Expected Output: 
+Pizza { toppings: ["pepperoni", "sausage"], size: 10, price: 12 }
+Pizza { toppings: ["pepperoni", "sausage", "mushrooms", "olives"], size: 10, price: 15 }
+
 
