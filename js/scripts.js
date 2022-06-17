@@ -70,10 +70,12 @@ Pizza.prototype.display = function() {
 
 $(document).ready(function(){
   let order = new Order;
-  const donCorleone = new Pizza(["Pepperoni", "Anchovies", "Horse"], 16, 26);
-  const tonySoprano = new Pizza(["Sausage", "Mushroom", "Olive", "Red Bell Pepper"], 16, 24);
-  const goodFella = new Pizza(["Chicken", "Red Peppers", "Olives", "Fresh Basil"], 16, 26);
-  const paradiso = new Pizza(["Fresh Garlic", "Tomatoes", "Basil", "Fresh Mozz"], 16, 28);
+  const corleone = new Pizza(["Pepperoni", "Anchovies", "Pepperoncinis"], 16, 24);
+  const soprano = new Pizza(["Mortadell", "Muzzarell", "Gabagool"], 16, 24);
+  const goodfella = new Pizza(["Chicken", "Bell Peppers", "Olives", "Basil"], 16, 26);
+  const paradiso = new Pizza(["Garlic", "Tomatoes", "Basil", "Mozzarella"], 16, 26);
+  const pies = [corleone, soprano, goodfella, paradiso];
+
   $("form#custom-pizza").submit(function(event) {
     event.preventDefault();
     const toppings = [];
@@ -91,4 +93,10 @@ $(document).ready(function(){
     $("#order-total").html("<strong>Order Total:&ensp;$" + order.price.toFixed(2) + "</strong>");
   });
 
+  $("form#specialty-pies").submit(function(event){
+    event.preventDefault();
+    const pie = parseInt($("input:radio[name=pies]:checked").val());
+    order.addItem(pies[pie]);
+    pies[pie].display();
+  });
 });

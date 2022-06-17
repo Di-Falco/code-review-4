@@ -10,27 +10,32 @@
 </head>
 <body>
   <div class="container">
-    <h1 class="box"><em>Pepperoni Tony's</em></h1>
+    <h1 class="title"><em>Pepperoni Tony's</em></h1>
+    <h2 class="box"><em>If you got the scharole, we got the basanagol!<em></h2>
     <div class="row justify-content-center box">
       <h2>~ Menu ~</h2>
       <div class="row justify-content-center">
         <div class="col-5 box">
           <h3><em>The Corleone</em></h3>
           <p>"I'm gonna make him a pizza he can't refuse"</p>
+          <p>Pepperoni, Anchovies, Pepperoncinis</p>
         </div>
         <div class="col-5 box">
           <h3><em>The Soprano</em></h3>
           <p>"Don't disrespect the pizza parlor"</p>
+          <p>Mortadell, Muzzarell, Gabagool</p>
         </div>
       </div>
       <div class="row justify-content-center">
         <div class="col-5 box">
           <h3><em>The Good Fella</em></h3>
           <p>"As far back as I could remember I've always wanted to eat a pizza"</p>
+          <p>Chicken, Bell Peppers, Olives, Basil</p>
         </div>
         <div class="col-5 box">
           <h3><em>The Paradiso</em></h3>
           <p>"Life is not what you see in films. Life is pizza"</p>
+          <p>Garlic, Tomatoes, Basil, Mozzarella</p>
         </div>
       </div>
     </div>
@@ -40,11 +45,10 @@
         <h2>Specialty Pies</h2>
         <h3>From our menu:</h3>
         <p><em>All specialty pizzas are 16"</em></p>
-        <input type="checkbox" name="pies" value="Pepperoni">&ensp;The Don Corleone<br>
-        <input type="checkbox" name="pies" value="Sausage">&ensp;The Tony Soprano<br>
-        <input type="checkbox" name="pies" value="Mushrooms">&ensp;The Good Fella<br>
-        <input type="checkbox" name="pies" value="Olives">&ensp;The Scarface<br>
-        <input type="checkbox" name="pies" value="Peppers">&ensp;The Paradiso<br>
+        <input type="radio" name="pies" value="0" required>&ensp;The Don Corleone<br>
+        <input type="radio" name="pies" value="1" required>&ensp;The Tony Soprano<br>
+        <input type="radio" name="pies" value="2" required>&ensp;The Good Fella<br>
+        <input type="radio" name="pies" value="3" required>&ensp;The Paradiso<br>
         <button type="submit" class="btn" form-id="specialty-pies">Add Items</button>
       </form>
       </div>
@@ -71,6 +75,8 @@
     </div>
     <div class="row justify-content-center box">
       <h2>Your Order:</h2>
+    </div>
+    <div class="row box">
       <p id="order-menu"><p>
       <p id="order-total"></p>
     </div>

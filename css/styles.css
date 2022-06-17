@@ -10,6 +10,24 @@ h2 {
   text-align: center;
 }
 
+.title {
+  border: 20px dotted goldenrod;
+  color: black;
+  margin: 1%;
+  padding: 2%;
+  box-sizing: border-box;
+  width: auto;
+}
+
+.title em {
+  background-color: white;
+  border: 5px solid darkgreen;
+  padding: 1%;
+  padding-left: 25%;
+  padding-right: 25%;
+  width: 90%;
+}
+
 .box {
   border: 15px double darkgreen;
   background-color: white;
