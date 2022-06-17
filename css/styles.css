@@ -1,5 +1,6 @@
 body {
   background-color: darkred;
+  font-family:Georgia, 'Times New Roman', Times, serif;
 }
 
 h1 {
@@ -50,4 +51,8 @@ h2 {
   border: 5px solid darkgreen;
   background-color: white;
   margin: 2%;
+}
+
+#total {
+  float: right;
 }

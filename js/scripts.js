@@ -34,16 +34,16 @@ function Pizza (toppings, size, price) {
 Pizza.prototype.pizzaPrice = function(){
   switch(this.size){
     case(10):
-      this.price = 12;
+      this.price = 6;
       break;
     case(12):
-      this.price = 14;
+      this.price = 8;
       break;
     case(16):
-      this.price = 18;
+      this.price = 12;
       break;
     case(18):
-      this.price = 20;
+      this.price = 14;
       break;
     case(48):
       this.price = 60;
@@ -52,11 +52,11 @@ Pizza.prototype.pizzaPrice = function(){
   
   if (this.size === 48) {
     for (let i = 0; i < this.toppings.length; i++) {
-      this.price += 3;
+      this.price += 2;
     }
   } else {
     for (let i = 2; i < this.toppings.length; i++) {
-      this.price += 1.5;
+      this.price += 0.5;
     }
   }
 };
@@ -65,8 +65,8 @@ Pizza.prototype.display = function() {
   if (this.toppings.length === 0) {
     this.toppings.push("Cheese");
   }
-  $("#order-menu").append("<strong>Item #" + this.id + ":<strong>&ensp;");
-  $("#order-menu").append("<br>Toppings:&ensp;");
+  $("#order-menu").append("<br><strong>Item #" + this.id + ":<strong>&ensp;");
+  $("#order-menu").append("<br>Pizza:&ensp;");
   for (let i = 0; i < this.toppings.length; i++){
     $("#order-menu").append(this.toppings[i] + "&ensp;");
   }
@@ -88,26 +88,26 @@ Side.prototype.display = function() {
   this.quantity++;
   $("#order-menu").append("<br><strong>Item #" + this.id + ":<strong>&ensp;");
   $("#order-menu").append("<br>Side:&ensp;" + this.sideItem);
-  $("#order-menu").append("<br>Cost:&ensp;$" + this.price.toFixed(2));
   $("#order-menu").append("<br>Quantity:&ensp;" + this.quantity);
+  $("#order-menu").append("&emsp;Cost:&ensp;$" + this.price.toFixed(2));
 };
 
 // UI Logic —————————
 
 $(document).ready(function(){
   let order = new Order;
-  const corleone = new Pizza(["Pepperoni", "Anchovies", "Pepperoncinis"], 16, 24);
-  const soprano = new Pizza(["Mortadell", "Muzzarell", "Gabagool"], 16, 24);
-  const goodfella = new Pizza(["Chicken", "Bell Peppers", "Olives", "Basil"], 16, 26);
-  const paradiso = new Pizza(["Garlic", "Tomatoes", "Basil", "Mozzarella"], 16, 26);
+  const corleone = new Pizza(["The Corleone"], 16, 16);
+  const soprano = new Pizza(["The Soprano"], 16, 16);
+  const goodfella = new Pizza(["The Good Fella"], 16, 18);
+  const paradiso = new Pizza(["The Paradiso"], 16, 18);
   const pies = [corleone, soprano, goodfella, paradiso];
 
-  const breadsticks = new Side("Breadsticks", 7.50);
-  const salad = new Side("Caesar Salad", 6);
-  const wings = new Side("6 Wings", 10);
-  const soda = new Side("1 Liter Soda", 4.50);
-  const beer = new Side("6 Pack Beer", 11.50);
-  const wine = new Side("Bottle Wine", 14.50);
+  const breadsticks = new Side("Breadsticks", 2.50);
+  const salad = new Side("Caesar Salad", 2);
+  const wings = new Side("6 Wings", 5.50);
+  const soda = new Side("1 Liter Soda", 1.50);
+  const beer = new Side("6 Pack Beer", 6.50);
+  const wine = new Side("Bottle Wine", 8.50);
 
   $("form#custom-pizza").submit(function(event) {
     event.preventDefault();
@@ -148,8 +148,11 @@ $(document).ready(function(){
         sideMenu[i].display();
       }
     }
+    $("#total").html("<strong>Order Total:&ensp;$" + order.price.toFixed(2) + "</strong>");
   });
 
-  $("#order-total").html("<strong>Order Total:&ensp;$" + order.price.toFixed(2) + "</strong>");
+  $("form#order-total").submit(function(event){
+    event.preventDefault();
+  });
 
 });
