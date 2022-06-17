@@ -1,3 +1,6 @@
+
+// Business Logic for Order —————————
+
 function Order () {
   this.items = {};
   this.currentId = 0;
@@ -9,14 +12,18 @@ Order.prototype.addItem = function(item) {
   this.items[item.id] = item;
   this.price += item.price;
 };
+
 Order.prototype.assignId = function() {
   this.currentId += 1;
   return this.currentId;
 };
+
 Order.prototype.deleteItem = function(id) {
   this.price -= items[id].price;
   delete this.items[id];
 };
+
+// Business Logic for Pizza ————————
 
 function Pizza (toppings, size, price) {
   this.toppings = toppings;
@@ -68,6 +75,25 @@ Pizza.prototype.display = function() {
   $("#order-menu").append("<br>");
 };
 
+// Business Logic for Side —————————
+
+function Side(sideItem, price){
+  this.sideItem = sideItem;
+  this.price = price;
+  this.quantity = 0;
+  this.id = 0;
+}
+
+Side.prototype.display = function() {
+  this.quantity++;
+  $("#order-menu").append("<br><strong>Item #" + this.id + ":<strong>&ensp;");
+  $("#order-menu").append("<br>Side:&ensp;" + this.sideItem);
+  $("#order-menu").append("<br>Cost:&ensp;$" + this.price.toFixed(2));
+  $("#order-menu").append("<br>Quantity:&ensp;" + this.quantity);
+};
+
+// UI Logic —————————
+
 $(document).ready(function(){
   let order = new Order;
   const corleone = new Pizza(["Pepperoni", "Anchovies", "Pepperoncinis"], 16, 24);
@@ -76,9 +102,16 @@ $(document).ready(function(){
   const paradiso = new Pizza(["Garlic", "Tomatoes", "Basil", "Mozzarella"], 16, 26);
   const pies = [corleone, soprano, goodfella, paradiso];
 
+  const breadsticks = new Side("Breadsticks", 7.50);
+  const salad = new Side("Caesar Salad", 6);
+  const wings = new Side("6 Wings", 10);
+  const soda = new Side("1 Liter Soda", 4.50);
+  const beer = new Side("6 Pack Beer", 11.50);
+  const wine = new Side("Bottle Wine", 14.50);
+
   $("form#custom-pizza").submit(function(event) {
     event.preventDefault();
-    const toppings = [];
+    let toppings = [];
       $("input:checkbox[name=toppings]:checked").each(function(index) {
         toppings[index] = $(this).val();
       });
@@ -88,8 +121,6 @@ $(document).ready(function(){
     pizza.pizzaPrice();
     order.addItem(pizza);
     pizza.display();
-    console.log(pizza);
-    console.log(order);
     $("#order-total").html("<strong>Order Total:&ensp;$" + order.price.toFixed(2) + "</strong>");
   });
 
@@ -98,5 +129,27 @@ $(document).ready(function(){
     const pie = parseInt($("input:radio[name=pies]:checked").val());
     order.addItem(pies[pie]);
     pies[pie].display();
+    $("#order-total").html("<strong>Order Total:&ensp;$" + order.price.toFixed(2) + "</strong>");
   });
+
+  $("form#sides").submit(function(event) {
+    event.preventDefault();
+    const sideMenu = [breadsticks, salad, wings, soda, beer, wine];
+    let sideOrder = [0,0,0,0,0,0];
+      $("input:checkbox[name=sides]").each(function(index) {
+        if($(this).is(":checked")) {
+          sideOrder[index] = parseInt($(this).val());
+        }
+      });
+
+    for(let i = 0; i < sideMenu.length; i++){
+      if (sideOrder[i] !== 0){
+        order.addItem(sideMenu[i]);
+        sideMenu[i].display();
+      }
+    }
+  });
+
+  $("#order-total").html("<strong>Order Total:&ensp;$" + order.price.toFixed(2) + "</strong>");
+
 });

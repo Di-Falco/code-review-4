@@ -16,32 +16,32 @@
       <h2>~ Menu ~</h2>
       <div class="row justify-content-center">
         <div class="col-5 box">
-          <h3><em>The Corleone</em></h3>
+          <h3><em>The Corleone —</em></h3>
           <p>"I'm gonna make him a pizza he can't refuse"</p>
-          <p>Pepperoni, Anchovies, Pepperoncinis</p>
+          <p>16" pie with Pepperoni, Anchovies, Pepperoncinis</p>
         </div>
         <div class="col-5 box">
-          <h3><em>The Soprano</em></h3>
+          <h3><em>The Soprano —</em></h3>
           <p>"Don't disrespect the pizza parlor"</p>
-          <p>Mortadell, Muzzarell, Gabagool</p>
+          <p>16" pie with Mortadell, Muzzarell, Gabagool</p>
         </div>
       </div>
       <div class="row justify-content-center">
         <div class="col-5 box">
-          <h3><em>The Good Fella</em></h3>
+          <h3><em>The Good Fella —</em></h3>
           <p>"As far back as I could remember I've always wanted to eat a pizza"</p>
-          <p>Chicken, Bell Peppers, Olives, Basil</p>
+          <p>16" pie with Chicken, Bell Peppers, Olives, Basil</p>
         </div>
         <div class="col-5 box">
-          <h3><em>The Paradiso</em></h3>
+          <h3><em>The Paradiso —</em></h3>
           <p>"Life is not what you see in films. Life is pizza"</p>
-          <p>Garlic, Tomatoes, Basil, Mozzarella</p>
+          <p>16" pie with Garlic, Tomatoes, Basil, Mozzarella</p>
         </div>
       </div>
     </div>
     <div class="row justify-content-center">
       <div class="col-4 box">
-      <form id="specialty-pies">
+      <form id="specialty-pies" class="sub-box">
         <h2>Specialty Pies</h2>
         <h3>From our menu:</h3>
         <p><em>All specialty pizzas are 16"</em></p>
@@ -51,11 +51,22 @@
         <input type="radio" name="pies" value="3" required>&ensp;The Paradiso<br>
         <button type="submit" class="btn" form-id="specialty-pies">Add Items</button>
       </form>
+      <form id="sides" class="sub-box">
+        <h3>Sides</h3>
+        <input type="checkbox" name="sides" value="1">&ensp;Breadsticks w/ Sauce<br>
+        <input type="checkbox" name="sides" value="1">&ensp;Caeser Salad<br>
+        <input type="checkbox" name="sides" value="1">&ensp;6 Wings<br>
+        <h3>Beverages</h3>
+        <input type="checkbox" name="sides" value="1">&ensp;Liter Soda<br>
+        <input type="checkbox" name="sides" value="1">&ensp;6 Pack Beer<br>
+        <input type="checkbox" name="sides" value="1">&ensp;Red Wine<br>
+        <button type="submit" class="btn" form-id="sides">Add Items</button>
+      </form>
       </div>
       <div class="col-7 box">
-      <form id="custom-pizza">
+      <form id="custom-pizza" class="sub-box">
         <h2>Custom Order</h2>
-        <h3>Choose your toppings:</h3>
+        <h3 class="sub-box">Choose your toppings:</h3>
         <input type="checkbox" name="toppings" value="Pepperoni">&ensp;Pepperoni<br>
         <input type="checkbox" name="toppings" value="Sausage">&ensp;Sausage<br>
         <input type="checkbox" name="toppings" value="Mushrooms">&ensp;Mushrooms<br>
@@ -63,7 +74,7 @@
         <input type="checkbox" name="toppings" value="Peppers">&ensp;Bell peppers<br>
         <input type="checkbox" name="toppings" value="Anchovies">&ensp;Anchovies<br>
         <input type="checkbox" name="toppings" value="Canadian-bacon">&ensp;Canadian bacon<br>
-        <h3>Choose a size:</h3>
+        <h3 class="sub-box">Choose a size:</h3>
         <input type="radio" name="size" value="10" required>&ensp;Small (10")<br>
         <input type="radio" name="size" value="12" required>&ensp;Medium (12")<br>
         <input type="radio" name="size" value="16" required>&ensp;Large (16")<br>
@@ -79,7 +90,10 @@
     <div class="row box">
       <p id="order-menu"><p>
       <p id="order-total"></p>
+    <form id="order-total">
+      <button type="submit" class="btn" form-id="custom-pizza">Complete Order</button>
     </div>
+    </form>
   </div>
 </body>
 </html>

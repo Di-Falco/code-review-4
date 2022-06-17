@@ -58,3 +58,24 @@ Expected Output:
 Toppings: Cheese
 Size: 12"
 Price: $14.00
+
+Describe Side()
+
+Test: "should store name and price values for each side menu option"
+Code:
+const breadsticks = new Side("Breadsticks", 7.50);
+console.log(breadsticks);
+Expected Output:
+Side { sideItem: "Breadsticks", price: 7.50 }
+
+Describe Side.prototype.display()
+
+Test: "should display item number, name, cost and quantity in the order menu"
+Code:
+const breadsticks = new Side("Breadsticks", 7.50);
+breadsticks.display();
+Expected Output:
+Item #1:
+Side: Breadsticks
+Cost: $7.50
+Quantity: 1
