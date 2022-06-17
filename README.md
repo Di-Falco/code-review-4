@@ -50,4 +50,11 @@ Toppings:  Pepperoni  Sausage  Olives
 Size: 16"
 Cost: $18.50
 
-
+Test: "should display "Cheese" if no toppings are selected"
+Code:
+const pizza1 = new Pizza([], 12, 14);
+pizza1.display();
+Expected Output:
+Toppings: Cheese
+Size: 12"
+Price: $14.00

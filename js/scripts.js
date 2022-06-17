@@ -55,7 +55,10 @@ Pizza.prototype.pizzaPrice = function(){
 };
 
 Pizza.prototype.display = function() {
-  $("#order-menu").append("<strong>Item #" + this.id + ":<strong>");
+  if (this.toppings.length === 0) {
+    this.toppings.push("Cheese");
+  }
+  $("#order-menu").append("<strong>Item #" + this.id + ":<strong>&ensp;");
   $("#order-menu").append("Toppings:&ensp;");
   for (let i = 0; i < this.toppings.length; i++){
     $("#order-menu").append(this.toppings[i] + "&ensp;");
@@ -81,6 +84,7 @@ $(document).ready(function(){
     pizza.display();
     console.log(pizza);
     console.log(order);
+    $("#order-total").html("<strong>Order Total:&ensp;$" + order.price.toFixed(2) + "</strong>");
   });
 
 });
